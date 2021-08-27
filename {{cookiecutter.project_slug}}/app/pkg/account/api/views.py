@@ -32,20 +32,14 @@ class ResetPasswordViewSet(drf_mixins.CreateModelMixin, ActionMixin, viewsets.Ge
         return self.list_action(request, *args, **kwargs)
 
 
-class ChangePasswordViewSet(drf_mixins.CreateModelMixin, ):
-    serializer_class = serializers.ChangePasswordSerializerV2
+class ChangePasswordViewSet(drf_mixins.CreateModelMixin, viewsets.GenericViewSet):
+    serializer_class = serializers.ChangePasswordSerializer
     permission_classes = (permissions.IsAuthenticated,)
 
 
-class ProfileView(generics.RetrieveUpdateAPIView):
+class ProfileViewSet(drf_mixins.RetrieveModelMixin, drf_mixins.UpdateModelMixin, viewsets.GenericViewSet):
     serializer_class = serializers.UserSerializer
     permission_classes = (permissions.IsAuthenticated,)
-    http_method_names = ('get', 'put',)
 
     def get_object(self):
         return self.request.user
-
-
-class UpdateProfilePhotoView(ProfileView):
-    serializer_class = serializers.ProfilePhotoSerializer
-    http_method_names = ('put',)

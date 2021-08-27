@@ -1,0 +1,23 @@
+{% extends 'emails/common/base_for_user.html' %}
+
+{% block body %}
+    <p>
+        You have created an account on Captain Bitcoin website.<br>
+        Please enter this code:
+    </p>
+    <h1>{{ code }}</h1>
+    <p>
+        in the verification form or follow the link<br>
+        <a href="{{ url }}">ACTIVATE</a><br>
+
+        If you're having trouble clicking the "Activate" link, copy and paste the URL below into your web browser:<br><br>
+
+        {{ url }}<br><br>
+
+        If you didn't request this email, there's nothing to worry about — you can safely ignore it.
+    </p><br><br>
+    <p>
+        Regards,<br>
+        Captain Bitcoin Team
+    </p>
+{% endblock %}

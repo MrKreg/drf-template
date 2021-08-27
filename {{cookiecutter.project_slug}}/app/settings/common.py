@@ -181,3 +181,8 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',
     ),
 }
+
+# External urls
+
+WEB_ACTIVATE_URL = os.getenv('WEB_ACTIVATE_URL', '')
+WEB_RESET_URL = os.getenv('WEB_RESET_URL', '')

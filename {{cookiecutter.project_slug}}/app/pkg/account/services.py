@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
 
+from app.pkg.account.notifications.email import ActivateUserNotify, PasswordResetNotify
+
 User = get_user_model()
 
 
@@ -31,12 +33,9 @@ class AuthService:
 
     @classmethod
     def send_activation_link(cls, user):
-        # TODO Check this after email service
-        # ActivateUserNotify.send_to_user(user)
-        pass
+        ActivateUserNotify.send_to_user(user)
 
     @classmethod
     def send_reset_link(cls, user):
-        # TODO Check this after email service
-        # PasswordResetNotify.send_to_user(user)
+        PasswordResetNotify.send_to_user(user)
         pass
